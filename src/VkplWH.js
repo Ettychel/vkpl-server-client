@@ -1,4 +1,5 @@
 "use strict";
+
 const { createHash } = require("crypto");
 const {
   ChannelStreamStart,
@@ -42,6 +43,27 @@ class VkplWH {
   }
 
   body;
+
+  /**
+   * @type {(
+   * ChannelStreamStart |
+   * ChannelStreamPause |
+   * ChannelStreamResume |
+   * ChannelStreamStop |
+   * ChannelStreamSettingsChange |
+   * ChannelStreamRecordNew |
+   * ChannelPointsRewardDemandCreate |
+   * RaidStart |
+   * ChannelSubscriptionCreate |
+   * ChannelSubscriptionRenew |
+   * ChannelSubscriptionChange |
+   * ChannelSubscriptionDelete |
+   * ChannelFollowCreate |
+   * ChannelFollowDelete |
+   * ChannelSubscriptionGiftBuy |
+   * ChannelSubscriptionGiftGive \
+   * )}
+   */
   hook;
 
   get event() {
@@ -52,18 +74,41 @@ class VkplWH {
     }
   }
 
+  /** @type {String} */
   get id() {
     return this.event.id;
   }
 
+  /** @type {Date} */
   get time() {
     return new Date(this.event.time);
   }
 
+  /** @type {Number} */
   get userId() {
     return this.event.user_id;
   }
 
+  /**
+   * @type {(
+   * 'channel_stream_start'|
+   * 'channel_stream_pause'|
+   * 'channel_stream_resume'|
+   * 'channel_stream_stop'|
+   * 'channel_stream_settings_change'|
+   * 'channel_stream_record_new'|
+   * 'channel_points_reward_demand_create'|
+   * 'raid_start'|
+   * 'channel_subscription_create'|
+   * 'channel_subscription_renew'|
+   * 'channel_subscription_change'|
+   * 'channel_subscription_delete'|
+   * 'channel_follow_create'|
+   * 'channel_follow_delete'|
+   * 'channel_subscription_gift_buy'|
+   * 'channel_subscription_gift_give' \
+   * )}
+   */
   get type() {
     return this.event.type;
   }

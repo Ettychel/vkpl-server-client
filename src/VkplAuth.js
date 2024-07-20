@@ -49,7 +49,8 @@ class VkplAuth {
     url.searchParams.set("client_id", process.env.VKPL_ID);
     url.searchParams.set("redirect_uri", redirect_uri);
     url.searchParams.set("response_type", "code");
-    if (scope.length) url.searchParams.set("scope", scope.join(","));
+    if (scope.length)
+      url.searchParams.set("scope", scope.map((e) => e.trim()).join(","));
     if (state) url.searchParams.set("state", state);
     return url.href;
   }
