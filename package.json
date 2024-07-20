@@ -1,0 +1,22 @@
+{
+  "name": "vkpl-server-client",
+  "version": "0.1.0",
+  "description": "Библиотека для взаимодействия с VK Play Live DevApi",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ettychel/vkpl-server-client.git"
+  },
+  "keywords": [
+    "VKPlayLive",
+    "VK",
+    "client",
+    "server"
+  ],
+  "author": "Yeti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ettychel/vkpl-server-client/issues"
+  },
+  "homepage": "https://github.com/Ettychel/vkpl-server-client#readme"
+}
