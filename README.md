@@ -104,7 +104,7 @@ app.get("/auth/vkpl", async (req, res) => {
   }
 });
 
-.post("/webhook", (req, res) => {
+app.post("/webhook", (req, res) => {
   try {
     const webhook = new VkplWH(req.body);
     console.log('Id      --> ' + webhook.id);
