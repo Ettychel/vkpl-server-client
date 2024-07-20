@@ -74,8 +74,7 @@
 
 ```JavaScript
 require("dotenv").config();
-const { VkplAuth } = require("../app/vkpl/VkplAuth");
-const { VkplWH } = require("../app/vkpl/VkplWH");
+const { VkplAuth, VkplWH } = require("vkpl-server-client");
 
 const express = require("express");
 const app = express();
