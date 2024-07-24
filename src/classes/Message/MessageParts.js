@@ -1,3 +1,4 @@
+const { BasePart } = require("./BasePart");
 const { LinkPart } = require("./LinkPart");
 const { MentionPart } = require("./MentionPart");
 const { SmilePart } = require("./SmilePart");
@@ -5,16 +6,18 @@ const { TextPart } = require("./TextPart");
 
 class MessageParts extends Array {
   constructor(...parts) {
+    parts = parts.flat(Infinity);
     super(...parts);
     this.#hydrate();
   }
 
   #hydrate() {
-    return this.map((part) => {
-      if ("text" in part) return new TextPart(part);
-      if ("smile" in part) return new SmilePart(part);
-      if ("mention" in part) return new MentionPart(part);
-      if ("link" in part) return new LinkPart(part);
+    this.forEach((part, i, arr) => {
+      if ("text" in part) arr[i] = new TextPart(part);
+      if ("smile" in part) arr[i] = new SmilePart(part);
+      if ("mention" in part) arr[i] = new MentionPart(part);
+      if ("link" in part) arr[i] = new LinkPart(part);
+      if (arr[i] instanceof BasePart) return;
       throw new Error("Тип не определен");
     });
   }
@@ -23,15 +26,16 @@ class MessageParts extends Array {
 
   /** @returns {string} Возвращает строку JSON */
   toJSON() {
-    return JSON.stringify(this.map((part) => part.toJSON()));
+    return JSON.stringify([...this].map((part) => part.toJSON()));
   }
 
   /** @returns {string} Возвращает как строку с условными префиксами */
   toString() {
-    const a = this.map((part) => {
-      return part.toString();
-    });
-    return a.join("");
+    return [...this]
+      .map((part) => {
+        return part.toString();
+      })
+      .join("");
   }
 }
 
