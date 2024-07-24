@@ -7,32 +7,18 @@ const {
   ChannelStreamResume,
   ChannelStreamStop,
   ChannelStreamSettingsChange,
-} = require("./WHEvents/ChannelStream");
-const { ChannelStreamRecordNew } = require("./WHEvents/ChannelStreamRecordNew");
-const {
+  ChannelStreamRecordNew,
   ChannelPointsRewardDemandCreate,
-} = require("./WHEvents/ChannelPointsRewardDemandCreate");
-const { RaidStart } = require("./WHEvents/RaidStart");
-const {
+  RaidStart,
   ChannelSubscriptionCreate,
-} = require("./WHEvents/ChannelSubscriptionCreate");
-const {
   ChannelSubscriptionRenew,
-} = require("./WHEvents/ChannelSubscriptionRenew");
-const {
   ChannelSubscriptionChange,
-} = require("./WHEvents/channelSubscriptionChange");
-const {
   ChannelSubscriptionDelete,
-} = require("./WHEvents/channelSubscriptionDelete");
-const { ChannelFollowCreate } = require("./WHEvents/ChannelFollowCreate");
-const { ChannelFollowDelete } = require("./WHEvents/ChannelFollowDelete");
-const {
+  ChannelFollowCreate,
+  ChannelFollowDelete,
   ChannelSubscriptionGiftBuy,
-} = require("./WHEvents/ChannelSubscriptionGiftBuy");
-const {
   ChannelSubscriptionGiftGive,
-} = require("./WHEvents/ChannelSubscriptionGiftGive");
+} = require("./WHEvents");
 
 class VkplWH {
   constructor(body) {
