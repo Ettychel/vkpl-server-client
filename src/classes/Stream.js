@@ -1,16 +1,17 @@
 "use strict";
 
+const { Base } = require("./Base");
 const { Category } = require("./Category");
 
-class Stream {
+class Stream extends Base {
   constructor(stream) {
-    this.id = stream.id;
-    this.title = stream.title;
-    this.category = new Category(stream.category);
-    this.videoId = stream.video_id;
-    this.started_at = stream.started_at;
-    this.ended_at = stream.ended_at;
-    this.preview_url = stream.preview_url;
+    super(stream);
+    this.id = this.raw.id;
+    this.title = this.raw.title;
+    this.category = this.raw.category
+      ? new Category(this.raw.category)
+      : undefined;
+    this.videoId = this.raw.video_id;
   }
 
   /** @type {String} */
@@ -21,26 +22,20 @@ class Stream {
   category;
   /** @type {Number} */
   videoId;
-  /** @type {Number} */
-  started_at;
-  /** @type {Number} */
-  ended_at;
-  /** @type {String} */
-  preview_url;
 
   /** @returns {Date} */
   get startedAt() {
-    return new Date(this.started_at);
+    return new Date(this.raw.started_at);
   }
 
   /** @returns {Date} */
   get endedAt() {
-    return new Date(this.ended_at);
+    return new Date(this.raw.ended_at);
   }
 
   /** @returns {URL} */
   get previewUrl() {
-    return new URL(this.preview_url);
+    return new URL(this.raw.preview_url);
   }
 }
 

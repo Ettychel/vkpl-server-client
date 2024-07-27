@@ -1,12 +1,14 @@
 "use strict";
 
-class Owner {
+const { User } = require("./User");
+
+class Owner extends User {
   constructor(owner) {
-    this.id = owner.id;
+    super(owner);
+    this.isVerifiedStreamer = owner.is_verified_streamer;
   }
 
-  /** @type {Number} */
-  id;
+  isVerifiedStreamer;
 }
 
-exports.Owner = Owner
+exports.Owner = Owner;

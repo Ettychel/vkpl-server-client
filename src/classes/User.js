@@ -1,21 +1,30 @@
-const colors = require('../json/colors.json')
+"use strict";
 
-class User {
+const colors = require("../json/colors.json");
+const { BaseUser } = require("./BaseUser");
+
+class User extends BaseUser {
   constructor(user) {
-    this.id = user.id
-    this.nick = user.nick
-    this.nick_color = user.nick_color
-		this.avatar_url = user.avatar_url
+    super(user);
+    this.nick = user.nick;
+    this.nickColor = user.nick_color;
   }
 
-  id
-  nick
-  nick_color
-	avatar_url
+  /** @type {String} */
+  nick;
 
+  /** @type {Number} */
+  nickColor;
+
+  /** @type {String} - HEX */
   get color() {
-    return colors[this.nick_color]
+    return colors[this.nickColor];
+  }
+
+  /** @type {URL} */
+  get avatarUrl() {
+    return new URL(this.raw.avatar_url);
   }
 }
 
-exports.User = User
+exports.User = User;

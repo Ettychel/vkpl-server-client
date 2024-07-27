@@ -1,17 +1,20 @@
 "use strict";
 
-class Category {
+const { Base } = require("./Base");
+
+class Category extends Base {
   constructor(category) {
+    super(category);
     this.id = category.id;
     this.type = category.type;
     this.title = category.title;
   }
-	/** @type {String} */
+  /** @type {String} */
   id;
-	/** @type {String} */
+  /** @type {String} */
   type;
-	/** @type {String} */
+  /** @type {String} */
   title;
 }
 
-exports.Category = Category
+exports.Category = Category;

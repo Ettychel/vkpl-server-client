@@ -1,16 +1,16 @@
 "use strict";
 
 const { Channel } = require("../classes/Channel");
-const { Owner } = require("../classes/Owner");
+const { BaseUser } = require("../classes/BaseUser");
 
 class BaseEvent {
   constructor(event) {
     this.channel = new Channel(event.channel);
-    this.owner = new Owner(event.owner);
+    this.owner = new BaseUser(event.owner);
   }
   /** @type {Channel} */
   channel;
-  /** @type {Owner} */
+  /** @type {BaseUser} */
   owner;
 }
 
