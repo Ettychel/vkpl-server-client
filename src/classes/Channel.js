@@ -1,8 +1,11 @@
 "use strict";
 
-class Channel {
+const { Base } = require("./Base");
+
+class Channel extends Base {
   constructor(channel) {
-    this.url = channel.url;
+    super(channel);
+    this.url = this.raw.url;
   }
 
   /** @type {String} */
@@ -14,4 +17,4 @@ class Channel {
   }
 }
 
-exports.Channel = Channel
+exports.Channel = Channel;

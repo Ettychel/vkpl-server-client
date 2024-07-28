@@ -1,16 +1,21 @@
-class Level {
-	constructor(level) {
-		this.id = level.id
-		this.name = level.name
-		this.price = level.price
-	}
+"use strict";
 
-	/** @type {String} */
-	id
-	/** @type {String} */
-	name
-	/** @type {Number} */
-	price
+const { Base } = require("./Base");
+
+class Level extends Base {
+  constructor(level) {
+    super(level);
+    this.id = this.raw.id;
+    this.name = this.raw.name;
+    this.price = this.raw.price;
+  }
+
+  /** @type {String} */
+  id;
+  /** @type {String} */
+  name;
+  /** @type {Number} */
+  price;
 }
 
-exports.Level = Level
+exports.Level = Level;

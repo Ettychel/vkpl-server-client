@@ -1,12 +1,14 @@
 "use strict";
 
+const { Base } = require("./Base");
 const { User } = require("./User");
 
-class Follow {
+class Follow extends Base {
   constructor(follow) {
-    this.follower = new User(follow.follower);
-    this.started_at = follow.started_at;
-    this.ended_at = follow?.ended_at;
+    super(follow);
+    this.follower = new User(this.raw.follower);
+    this.started_at = this.raw.started_at;
+    this.ended_at = this.raw?.ended_at;
   }
 
   /** @type {User} */
@@ -28,4 +30,4 @@ class Follow {
   }
 }
 
-exports.Follow = Follow
+exports.Follow = Follow;

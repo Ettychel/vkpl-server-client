@@ -1,9 +1,13 @@
 "use strict";
 
-class SourceUrl {
+const { hydrate } = require("../Util");
+const { Base } = require("./Base");
+
+class SourceUrl extends Base {
   constructor(sourceUrl) {
-    this.type = sourceUrl.type;
-    this.url = sourceUrl.url;
+    super(sourceUrl);
+    this.type = this.raw.type;
+    this.url = this.raw.url;
   }
   /** @type {String} */
   type;
@@ -16,10 +20,8 @@ class SourceUrl {
    * @returns
    */
   static hydrate(collection) {
-    return collection.map((item) => {
-      return new this(item);
-    });
+    return hydrate(this, collection);
   }
 }
 
-exports.SourceUrl = SourceUrl
+exports.SourceUrl = SourceUrl;

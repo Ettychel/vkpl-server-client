@@ -1,15 +1,21 @@
 "use strict";
 
-class Reward {
+const { Base } = require("./Base");
+
+class Reward extends Base {
   constructor(reward) {
-    this.id = reward.id;
-    this.name = reward.name;
-    this.price = reward.price;
+    super(reward);
+    this.id = this.raw.id;
+    this.name = this.raw.name;
+    this.price = this.raw.price;
   }
 
+  /** @type {String} */
   id;
+  /** @type {String} */
   name;
+  /** @type {Number} */
   price;
 }
 
-exports.Reward = Reward
+exports.Reward = Reward;

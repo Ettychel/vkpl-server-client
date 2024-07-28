@@ -18,7 +18,7 @@ class Stream extends Base {
   id;
   /** @type {String} */
   title;
-  /** @type {Category} */
+  /** @type {(Category | undefined)} */
   category;
   /** @type {Number} */
   videoId;

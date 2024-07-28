@@ -1,13 +1,16 @@
 "use strict";
+
+const { Base } = require("./Base");
 const { Channel } = require("./Channel");
 const { User } = require("./User");
 
-class Raid {
+class Raid extends Base {
   constructor(raid) {
-    this.channel = new Channel(raid.source.channel);
-    this.owner = new User(raid.source.owner);
-    this.raiders_count = raid.raiders_count;
-    this.started_at = raid.started_at;
+    super(raid);
+    this.channel = new Channel(this.raw.source.channel);
+    this.owner = new User(this.raw.source.owner);
+    this.raiders_count = this.raw.raiders_count;
+    this.started_at = this.raw.started_at;
   }
 
   /** @type {Channel} */

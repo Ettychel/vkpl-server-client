@@ -1,10 +1,12 @@
 "use strict";
 
+const { Base } = require("../Base");
 const { Level } = require("../Level");
 const { User } = require("../User");
 
-class SubscriptionGiftBase {
+class SubscriptionGiftBase extends Base {
   constructor(subscription) {
+    super(subscription);
     this.is_anonymous = subscription.is_anonymous;
     this.donator = this.#setDonator(subscription?.donator);
     this.level = new Level(subscription.level);

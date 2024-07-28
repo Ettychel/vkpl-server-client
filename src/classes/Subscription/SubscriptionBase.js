@@ -1,10 +1,12 @@
 "use strict";
 
+const { Base } = require("../Base");
 const { Level } = require("../Level");
 const { User } = require("../User");
 
-class SubscriptionBase {
+class SubscriptionBase extends Base {
   constructor(subscription) {
+    super(subscription);
     this.subscriber = new User(subscription.subscriber);
     this.level = new Level(subscription.level);
     this.started_at = subscription.started_at;

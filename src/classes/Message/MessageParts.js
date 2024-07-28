@@ -1,3 +1,5 @@
+"use strict";
+
 const { BasePart } = require("./BasePart");
 const { LinkPart } = require("./LinkPart");
 const { MentionPart } = require("./MentionPart");
@@ -6,11 +8,18 @@ const { TextPart } = require("./TextPart");
 
 class MessageParts extends Array {
   constructor(...parts) {
+    this.raw = parts;
     parts = parts.flat(Infinity);
     super(...parts);
     this.#hydrate();
   }
 
+  /** Исходные данные переданные в конструктор */
+  raw;
+
+  /**
+   * Преобразует объекты part в классы XPart
+   */
   #hydrate() {
     this.forEach((part, i, arr) => {
       if ("text" in part) arr[i] = new TextPart(part);
@@ -22,7 +31,7 @@ class MessageParts extends Array {
     });
   }
 
-  static createFromString() {}
+  // static createFromString() {}
 
   /** @returns {string} Возвращает строку JSON */
   toJSON() {

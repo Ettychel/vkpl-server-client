@@ -1,20 +1,22 @@
 "use strict";
 
+const { Base } = require("./Base");
 const { Category } = require("./Category");
 const { SourceUrl } = require("./SourceUrl");
 
-class StreamRecord {
+class StreamRecord extends Base {
   constructor(streamRecord) {
-    this.id = streamRecord.id;
-    this.title = streamRecord.title;
-    this.duration = streamRecord.duration;
-    this.category = new Category(streamRecord.category);
-    this.sourceUrls = SourceUrl.hydrate(streamRecord.SourceUrl);
-    this.videoId = streamRecord.video_id;
-    this.stream_started_at = streamRecord.stream_started_at;
-    this.created_at = streamRecord.created_at;
-    this.preview_url = streamRecord.preview_url;
-    this.processState = streamRecord.process_state;
+    super(streamRecord);
+    this.id = this.raw.id;
+    this.title = this.raw.title;
+    this.duration = this.raw.duration;
+    this.category = new Category(this.raw.category);
+    this.sourceUrls = SourceUrl.hydrate(this.raw.SourceUrl);
+    this.videoId = this.raw.video_id;
+    this.stream_started_at = this.raw.stream_started_at;
+    this.created_at = this.raw.created_at;
+    this.preview_url = this.raw.preview_url;
+    this.processState = this.raw.process_state;
   }
 
   /** @type {String} */
