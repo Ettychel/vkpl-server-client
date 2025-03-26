@@ -8,9 +8,10 @@ const { TextPart } = require("./TextPart");
 
 class MessageParts extends Array {
   constructor(...parts) {
-    this.raw = parts;
+    const raw = parts;
     parts = parts.flat(Infinity);
     super(...parts);
+    this.raw = raw;
     this.#hydrate();
   }
 

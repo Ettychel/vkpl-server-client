@@ -1,5 +1,6 @@
 "use strict";
 
+const { Base } = require("./Base");
 const { MessageParts } = require("./Message/MessageParts");
 const { Reward } = require("./Reward");
 const { User } = require("./User");

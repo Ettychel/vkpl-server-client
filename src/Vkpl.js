@@ -32,10 +32,16 @@ class Vkpl {
     const options = getNonEmptyProp({ limit, categoryId, categoryType });
     try {
       const response = await this.client.getOnlineChannels(options);
-      console.time("test");
       const a = ChannelObject.hydrate(response.data.channels);
-      console.timeEnd("test");
       return a;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async send(channel, messageParts) {
+    try {
+      return await this.client.send(channel, messageParts);
     } catch (error) {
       throw error;
     }
